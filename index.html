@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Slideshow</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    iframe { border: 0; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <iframe id="show" allowfullscreen></iframe>
+  <script>
+    // Paste your published link here, but change "/pub?" to "/embed?"
+    const BASE = "https://docs.google.com/presentation/d/e/2PACX-1vQMAlycKbBwguEwaqnkt-lNsLXSEEwrImGAM0AggtrQWvTqV6erpZTRfOHyOf2M8rhvqknyM5bN8Yh1/pub?start=true&loop=true&delayms=5000";
+    const RELOAD_MINUTES = 15;
+
+    function load() {
+      // Cache-busting parameter forces a fresh copy each time
+      document.getElementById("show").src = BASE + "&t=" + Date.now();
+    }
+    load();
+    setInterval(load, RELOAD_MINUTES * 60 * 1000);
+  </script>
+</body>
+</html>
